@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Списки в ООРВ</title>
+  <link rel="stylesheet" href="fonts.css">
+  <link rel="stylesheet" href="layout.css">
+  <link rel="stylesheet" href="menu.css">
+  <link rel="stylesheet" href="prospective-sales-list.css">
+  <link rel="stylesheet" href="list.css">
+
+  <script type="text/javascript" src="jquery-2.2.4.min.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function() {
+
+
+      var $del = $(".delete-link");
+      $del.click(function() {
+        var $this = $(this);
+              var $link = $this.closest(".list-link");
+              var $list = $link.closest(".list");
+
+      $link.addClass("delete-animation");
+      $list.addClass("delete-puff padding-animation");
+      $list.prev(".delete-message").addClass("visible");
+      $this.addClass("invisible");
+
+      setTimeout(function(){
+        $list.removeClass("delete-puff")
+      }, 1000);
+     });
+
+      var $restore = $(".restore");
+       $restore.click(function() {
+         var $this = $(this);
+         var $message = $this.closest(".delete-message").removeClass("visible");
+         var $list = $message.next(".list").removeClass("padding-animation");
+            $list.find(".list-link").removeClass("delete-animation");
+            $list.find(".delete-link").removeClass("invisible");
+        });
+
+    //  $(this).click(function() {
+    //    $(".restore").addClass("invisible");
+    //    $("delete-message").removeClass("visible");
+    //  });
+  });
+	</script>
+</head>
+<body>
+  <div class="header-wrapper">
+    <nav class="header-content">
+      <a href="/" class="header-logo"></a>
+      <div class="header-search">Введите поисковый запрос
+        <span class="search-button"></span>
+      </div>
+
+    </nav>
+  </div>
+  <div class="wrapper">
+    <div class="content">
+      <h1 class="content-header">Потенциальные продажи</h1>
+      <nav class="tabs">
+        <a href="#" class="tab-link">Нераспределенные
+          <span class="tab-counter">5740</span>
+        </a>
+        <a href="#" class="tab-link">Распределенные
+          <span class="tab-counter">13690</span>
+        </a>
+        <a href="#" class="tab-link">Просроченные
+          <span class="tab-counter">12874</span>
+        </a>
+        <a href="index.html" class="tab-link">Загруженные
+          <span class="tab-counter">12874</span>
+        </a>
+        <a href="#" class="tab-link tab-link-search">Поиск</a>
+      </nav>
+      <div class="line"></div>
+
+      <nav class="tabs">
+        <div href="#" class="tab-list-name">Мой любимый файлик от конкурентов.xlsx</div>
+          <span href="#" class="tab-list-delete">Удалить список</span>
+      </nav>
+      <div class="line"></div>
+
+      <div class="prospective-sales">
+
+        <div class="prospective-sales-lists">
+          <img src="https://img-fotki.yandex.ru/get/46412/54602231.1/0_e4bfd_4d654409_orig" alt="">
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

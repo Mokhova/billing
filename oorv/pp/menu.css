@@ -1,0 +1,40 @@
+.header-wrapper {
+  width: 100vw;
+  height: 64px;
+  margin: 0 auto;
+  background-color: #F8F8F8;
+}
+
+.header-content {
+  width: 980px;
+  margin: 0 auto;
+}
+
+.header-logo {
+  float: left;
+  width: 95px;
+  height: 64px;
+  margin: 0 20px 0 0;
+  background: url(https://img-fotki.yandex.ru/get/55828/54602231.1/0_e4733_40c3b25f_orig) 0 14px no-repeat;
+}
+
+.header-search {
+  width: 565px;
+  height: 27px;
+  display: inline-block;
+  border: 2px solid #E8E8E8;
+  background-color: #fff;
+  position: relative;
+  margin: 20px 40px 0 0;
+  font-weight: 600;
+  color: #b7b7b7;
+  font-size: 14px;
+  padding-left:10px;
+  padding-top: 1px;
+}
+
+.search-button {
+  font-family: 'Kontur-Iconic';
+  margin-right: 10px;
+  float: right;
+}

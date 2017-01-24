@@ -1,0 +1,62 @@
+body
+{
+  font-family: 'Proxima Nova';
+  color: #404040;
+  width: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Типографика и тексты */
+header
+{
+  margin-top: 60px;
+}
+
+h1
+{
+	font-weight: normal;
+  font-size: 38px;
+  color: #8E3B4C;
+  margin-bottom: -30px;
+}
+
+h2
+{
+  font-weight: lighter;
+  font-size: 26px;
+  margin-bottom: 8px;
+}
+
+
+p
+{
+  font-size: 18px;
+  width: 75%;
+  margin-top: 0px;
+  min-width: 400px;
+}
+
+@media only screen and (min-width: 900px) and (max-width: 960px) {
+  p
+  {
+    width: 80%;
+  }
+}
+
+
+@media only screen and (max-width: 370px)
+{
+  h1
+  {
+    font-size: 30px;
+    margin-bottom: -50px;
+  }
+
+  p
+  {
+    font-size: 20px;
+    width: 100%;
+    min-width: 0px;
+  }
+}

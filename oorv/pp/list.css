@@ -1,0 +1,29 @@
+.tab-delete-link {
+  transition: 0.1s ease-out;
+  color: #D92B2B;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-block;
+  height: 50px;
+  position: absolute;
+  right: 46px;
+  background-color: #fff;
+  text-decoration: none;
+  background: linear-gradient(to left, #fff 90%, rgba(255,255,255,0));
+}
+
+.tab-delete-link::before {
+  content: '\E00E';
+  font-family: 'Kontur-Iconic';
+  color: #D92B2B;
+  display: inline-block;
+  height: 30px;
+  width: 18px;
+  padding-left: 20px;
+}
+
+
+.prospective-sales-lists {
+  margin-top: 50px;
+}

@@ -1,0 +1,120 @@
+* {
+  box-sizing: border-box;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI';
+  font-weight: normal;
+  color: #404040;
+  text-decoration: none;
+}
+
+a {
+  text-decoration: none;
+  color: #3390D8;
+}
+
+
+
+/*контент*/
+.wrapper {
+  width: 100vw;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+.line {
+  width: 100vw;
+  position: absolute;
+  left: 0;
+  border-top: 1px solid #e8e8e8;
+}
+
+.content {
+  width: 980px;
+  margin: 0 auto;
+}
+
+.content-header {
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.tabs {
+  margin-top: 30px;
+  margin-bottom: 5px;
+  position: relative;
+}
+
+.tab-link {
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.1px;
+  color: #3390D8;
+  font-size: 18px;
+  font-weight: 600;
+  margin-right: 12px;
+}
+
+.tab-link:hover {
+  color: #e04000;
+}
+
+.active {
+  color: #404040;
+}
+
+.active:hover {
+  color: #404040;
+  cursor: default;
+}
+
+.tab-counter {
+  font-size: 12px;
+  vertical-align: top;
+}
+
+.tab-link-search {
+  float: right;
+  margin-right: 0;
+}
+
+.tab-link-search::before {
+  content: '\E009';
+  font-family: 'Kontur-Iconic';
+}
+
+.tab-list-name {
+  font-size: 18px;
+  font-weight: normal;
+  display: inline-block;
+}
+
+.tab-list-delete {
+  transition: 0.1s ease-out;
+  color: #D92B2B;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-block;
+  height: 50px;
+  position: absolute;
+  right: 0;
+  background-color: #fff;
+  text-decoration: none;
+  background: linear-gradient(to left, #fff 90%, rgba(255,255,255,0));
+}
+
+.tab-list-delete::before {
+  content: '\E022';
+  font-family: 'Kontur-Iconic';
+  color: #D92B2B;
+  display: inline-block;
+  height: 30px;
+  width: 18px;
+  padding-left: 20px;
+}

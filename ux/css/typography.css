@@ -1,0 +1,24 @@
+* {
+  font-family: 'Proxima Nova';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 18px;
+  color: #606060;
+}
+
+.header-title {
+  width: 650px;
+
+  font-size: 2em;
+}
+
+.header-subtitle {
+  width: 40.6em;
+  margin: 0 auto;
+  font-size: 1.125em;
+}
+
+
+.point-title {
+  font-size: 1.5em;
+}

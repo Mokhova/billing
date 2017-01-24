@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Списки в ООРВ</title>
+  <link rel="stylesheet" href="fonts.css">
+  <link rel="stylesheet" href="layout.css">
+  <link rel="stylesheet" href="menu.css">
+  <link rel="stylesheet" href="prospective-sales-list.css">
+
+  <script type="text/javascript" src="jquery-2.2.4.min.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function() {
+
+
+      var $del = $(".delete-link");
+      $del.click(function() {
+        var $this = $(this);
+              var $link = $this.closest(".list-link");
+              var $list = $link.closest(".list");
+
+      $link.addClass("delete-animation");
+      $list.addClass("delete-puff padding-animation");
+      $list.prev(".delete-message").addClass("visible");
+      $this.addClass("invisible");
+      setTimeout(function(){
+        $list.removeClass("delete-puff")
+      }, 1000);
+     });
+
+      var $restore = $(".restore");
+       $restore.click(function() {
+         var $this = $(this);
+         var $message = $this.closest(".delete-message").removeClass("visible");
+         var $list = $message.next(".list").removeClass("padding-animation");
+            $list.find(".list-link").removeClass("delete-animation");
+            $list.find(".delete-link").removeClass("invisible");
+        });
+
+    //  $(this).click(function() {
+    //    $(".restore").addClass("invisible");
+    //    $("delete-message").removeClass("visible");
+    //  });
+  });
+	</script>
+</head>
+<body>
+  <div class="header-wrapper">
+    <nav class="header-content">
+      <a href="/" class="header-logo"></a>
+      <div class="header-search">Введите поисковый запрос
+        <span class="search-button"></span>
+      </div>
+
+    </nav>
+  </div>
+  <div class="wrapper">
+    <div class="content">
+      <h1 class="content-header">Потенциальные продажи</h1>
+      <nav class="tabs">
+        <a href="#" class="tab-link">Нераспределенные
+          <span class="tab-counter">5740</span>
+        </a>
+        <a href="#" class="tab-link">Распределенные
+          <span class="tab-counter">13690</span>
+        </a>
+        <a href="#" class="tab-link">Просроченные
+          <span class="tab-counter">12874</span>
+        </a>
+        <a href="#" class="tab-link active">Загруженные
+          <span class="tab-counter">12874</span>
+        </a>
+        <a href="#" class="tab-link tab-link-search">Поиск</a>
+      </nav>
+      <div class="line"></div>
+
+      <div class="prospective-sales">
+        <div class="prospective-sales-filters">
+          <label for="region" class="old-input-label">
+            <input type="text" name="region" placeholder="Регион: код или название" class="old-input">
+          </label>
+          <label for="region" class="old-input-label">
+            <input type="text" name="region" placeholder="СЦ: код или название" class="old-input">
+          </label>
+        </div>
+        <!-- <div class="line"></div> -->
+        <div class="prospective-sales-lists">
+          <div class="list-download-date">
+            20.05.2016
+          </div>
+          <div class="delete-message">Список удален <a href="#" class="restore">Восстановить</a></div>
+          <div class="list">
+            <a href="list.html" class="invis"></a>
+            <a href="#" class="list-link">
+              <div class="list-name">Конференция по бухучету—1 мая
+                <span class="list-type">Подключение</span>
+              </div>
+              <span class="serviceCenter">0800</span>
+              <span class="list-source warm">Заявка от клиента</span>
+              <span class="list-product-icon"></span>
+              <span class="list-product">Информационная безопасность
+                <span class="fade"></span>
+              </span>
+              <span class="list-manager">0800123—Котиова Мария Михайловна
+                <span class="fade"></span>
+              </span>
+
+              <span class="delete-link"></span>
+            </a>
+          </div>
+
+          <div class="delete-message">Список удален <a href="#" class="restore">Восстановить</a></div>
+          <div class="list">
+            <a href="list.html" class="invis"></a>
+            <a href="#" class="list-link">
+              <div class="list-name">Мой прекрасный файлик от конкурентов
+                <span class="list-type">Подключение</span>
+              </div>
+              <span class="serviceCenter">0800</span>
+              <span class="list-source cold">Заявка от клиента</span>
+              <span class="list-product-icon zakupki"></span>
+              <span class="list-product">Закупки</span>
+              <span class="list-manager">080011—Климовицкая Дарья Игоревна
+                <span class="fade"></span>
+              </span>
+              <span href="#" class="delete-link"></span>
+            </a>
+          </div>
+
+          <div class="delete-message">Список удален <a href="#" class="restore">Восстановить</a></div>
+          <div class="list">
+            <a href="#" class="list-link">
+              <div class="list-name">Базы налоговая-1
+                <span class="list-type">Продление</span>
+              </div>
+              <span class="serviceCenter">0977</span>
+              <span class="list-source warm">Заявка от клиента</span>
+              <span class="list-product-icon extern"></span>
+              <span class="list-product">Экстерн</span>
+              <span class="list-manager">097701—Константинопольский Константин
+                <span class="fade"></span>
+              </span>
+              <span href="#" class="delete-link"></span>
+            </a>
+          </div>
+
+
+          <div class="list-download-date">
+            13.05.2016
+          </div>
+
+          <div class="delete-message">Список удален <a href="#" class="restore">Восстановить</a></div>
+          <div class="list">
+            <a href="#" class="list-link">
+              <div class="list-name">Конференция по бухучету—01.05.2016
+                <span class="list-type">Продление</span>
+              </div>
+              <span class="serviceCenter">1012</span>
+              <span class="list-source warm">Заявка от клиента</span>
+              <span class="list-product-icon diadoc"></span>
+              <span class="list-product">Диадок</span>
+              <span class="list-manager">1012—Региональный центр продаж по гор. Мурманск
+                <span class="fade"></span>
+              </span>
+              <span href="#" class="delete-link"></span>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
