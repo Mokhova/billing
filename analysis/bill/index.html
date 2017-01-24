@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Детализация счета</title>
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="fonts.css">
+  <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+
+  <script type="text/javascript" src="jquery-2.2.3.min.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function() {
+
+   var $def = $(".default1");
+  /*   $def.click(function() {
+      $(".default1 + .header-dropping").toggleClass("first");
+      $(".first + .header-dropping").toggleClass("second");
+      $(".second + .header-dropping").toggleClass("third");
+    });
+*/
+    $def.click(function() {
+      $(".default1 > .header-subtitle").toggleClass("opened");
+      $(".header-dropping:nth-of-type(3)").toggleClass("first");
+      $(".header-dropping:nth-of-type(4)").toggleClass("second");
+      $(".header-dropping:nth-of-type(5)").toggleClass("third");
+    });
+  });
+	</script>
+</head>
+<body>
+  <header class="header">
+    <div class="header-fixed">
+      <h1 class="header-title">Метрики детализации счета</h1>
+    </div>
+
+    <div class="header-dropping default1">
+      <h2 class="header-subtitle">Общие метрики</h2>
+    </div>
+
+    <div class="header-dropping">
+      <a href="certs.html" class="header-subtitle">Серты</a>
+    </div>
+
+    <div class="header-dropping">
+      <a href="subs.html" class="header-subtitle">Подписки</a>
+    </div>
+
+    <div class="header-dropping">
+      <a  href="docs.html" class="header-subtitle">Документы</a>
+    </div>
+
+  </header>
+
+  <div class="container">
+    <section class="tab-metrics">
+      <div class="block">
+        <h3 class="block-title">Комментарий</h3>
+        <p>Хотим понимать, как часто в одном счете редактируют комментарий.
+          Для этого будем отсылать событие каждый раз, когда сохраняем коммент.
+          Т.к. у каждого уникальынй урл, то мы будем фильтровать счета из всех стрнаиц
+          только детализации и там уже смотреть, сколько таких событий на каждый счет.
+        </p>
+        <div class="code">
+          <div class="code-title">Событие в GA</div>
+          <a href="https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide#intro" class="code-spec">спека</a>
+          <code>
+            _trackEvent(category, action, opt_label, opt_value, opt_noninteraction)
+          </code>
+          <code>
+              Category: bill-general <br>
+              Action: save <br>
+              Label: comment <br>
+          </code>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3 class="block-title">Действия по счету</h3>
+        <p>Хотим понимать, пользуются ли действиями из счета. Для полной картины еще хорошо бы
+          повесить события на действия в списке счетов.
+        </p>
+        <div class="code">
+          <div class="code-title">Событие в GA</div>
+          <a href="https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide#intro" class="code-spec">спека</a>
+          <!-- <code>
+            _trackEvent(category, action, opt_label, opt_value, opt_noninteraction)
+          </code> -->
+          <code>
+            // на кнопку печати <br>
+            Category: bill-general <br>
+            Action: print <br>
+            Label: print <br>
+          </code>
+
+          <code>
+            // на обе кнопки отравки <br>
+            Category: bill-general <br>
+            Action: send <br>
+            Label: mail // на кнопку «отправить по почте»<br>
+            Label: diadoc // на кнопку «отправить через ДД» <br>
+          </code>
+
+          <code>
+            // на кнопку «оплатить условно» <br>
+            Category: bill-general <br>
+            Action: create <br>
+            Label: conditional-payment <br>
+          </code>
+
+          <code>
+            // на кнопку «удалить» <br>
+            Category: bill-general <br>
+            Action: delete <br>
+            Label: delete <br>
+          </code>
+
+          <code>
+            // повесить на кнопку «восстановить» <br>
+            Category: bill-general <br>
+            Action: recover <br>
+            Label: recover <br>
+          </code>
+
+        </div>
+      </div>
+
+      <div class="block">
+        <h3 class="block-title">Информация об СЦ</h3>
+        <p>Хотим видеть, понимает ли вообще кто-то, что можно кликнуть на код СЦ.
+        </p>
+        <div class="code">
+          <div class="code-title">Событие в GA</div>
+          <a href="https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide#intro" class="code-spec">спека</a>
+          <!-- <code>
+            _trackEvent(category, action, opt_label, opt_value, opt_noninteraction)
+          </code> -->
+          <code>
+            // Обслуживает СЦ <br>
+            Category: bill-general <br>
+            Action: open <br>
+            Label: service-center <br>
+          </code>
+          <code>
+            // Доставляет СЦ <br>
+            Category: bill-general <br>
+            Action: open <br>
+            Label: deliver-center <br>
+          </code>
+        </div>
+      </div>
+
+    </section>
+  </div>
+
+</body>
+</html>

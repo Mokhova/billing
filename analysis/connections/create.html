@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Метрики связей</title>
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="fonts.css">
+  <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+
+  <script type="text/javascript" src="jquery-2.2.3.min.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function() {
+
+   var $def = $(".default1");
+  /*   $def.click(function() {
+      $(".default1 + .header-dropping").toggleClass("first");
+      $(".first + .header-dropping").toggleClass("second");
+      $(".second + .header-dropping").toggleClass("third");
+    });
+*/
+    $def.click(function() {
+      $(".default1 > .header-subtitle").toggleClass("opened");
+      $(".header-dropping:nth-of-type(2)").toggleClass("first");
+      $(".header-dropping:nth-of-type(4)").toggleClass("second");
+      $(".header-dropping:nth-of-type(5)").toggleClass("third");
+    });
+  });
+	</script>
+</head>
+<body>
+  <header class="header">
+    <div class="header-fixed">
+      <h1 class="header-title">Метрики связанных организаций</h1>
+    </div>
+
+    <div class="header-dropping">
+      <a href="index.html" class="header-subtitle">Принцип сбора метрик</a>
+    </div>
+
+    <div class="header-dropping default1">
+      <h2 class="header-subtitle">Создание</h2>
+    </div>
+
+    <div class="header-dropping">
+      <a href="edit.html" class="header-subtitle">Редактирование</a>
+    </div>
+
+    <div class="header-dropping">
+      <a href="show.html" class="header-subtitle">Просмотр</a>
+    </div>
+
+  </header>
+
+  <div class="container">
+    <section class="tab-metrics">
+      <div class="block">
+        <h3 class="block-title">Ссылка «создать связь» из блока контакты</h3>
+        <p>Сколько людей создают новые связи, несмотря на миграцию КС. <br>
+        </p>
+        <img src="img/1.png" alt="скрин связей" width="650px">
+        <div class="code">
+          <div class="code-title">Событие в GA</div>
+          <a href="https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide#intro" class="code-spec">спека</a>
+          <code>
+            _trackEvent(category, action, opt_label, opt_value, opt_noninteraction)
+          </code>
+          <code>
+              Category: client-connection <br>
+              Action: click <br>
+              Label: create-link <br>
+          </code>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3 class="block-title">Кнопка «отменить»</h3>
+        <p>Посмотрим, может кто-то не понял, что это за панелька, что в ней делать =)
+        </p>
+        <img src="img/2.png" alt="скрин связей" width="650px">
+        <div class="code">
+          <div class="code-title">Событие в GA</div>
+          <a href="https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide#intro" class="code-spec">спека</a>
+          <code>
+            _trackEvent(category, action, opt_label, opt_value, opt_noninteraction)
+          </code>
+          <code>
+              Category: client-connection <br>
+              Action: cancel <br>
+              Label: cancel-link <br>
+          </code>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3 class="block-title highlight">Сколько связей создано?</h3>
+        <p>Самый главный вопрос, который всех волнует =)
+          Когда появляется статус «связь создана» отправляем два события:
+          <ul>
+            <li>Событие + id, чтобы потом именно по этой связи смотреть статистику.</li>
+            <li>Событие без id, чтобы легком смотреть общую статистку.</li>
+          </ul>
+        </p>
+        <img src="img/3.png" alt="скрин связей" width="650px">
+        <div class="code">
+          <div class="code-title">Событие в GA</div>
+          <a href="https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide#intro" class="code-spec">спека</a>
+
+          <code>
+            Category: client-connection <br>
+            Action: created <br>
+            Label: created + <идентификатор связи> <br>
+          </code>
+
+          <code>
+            Category: client-connection <br>
+            Action: created <br>
+            Label: created <br>
+          </code>
+
+        </div>
+      </div>
+
+
+      <div class="block">
+        <h3 class="block-title">Данные созданной связи</h3>
+        <p>Отправляем по кнопке «показать»: одну пачку без id,
+          вторую—с id.
+        </p>
+        <div class="code">
+          <div class="code-title">Событие в GA</div>
+          <a href="https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide#intro" class="code-spec">спека</a>
+          <code>
+            Category: client-connection <br>
+            Action: show <br>
+            <br>
+            // это все сначала без id связи, а потом с id <br>
+            Label: clients-N //кол-во клиентов в связи <br>
+            Label: star //если выбран «звездный» клиент<br>
+            Label: contact //если выбрано КЛ <br>
+            Label: contact-empty //если не выбрано КЛ <br>
+            Label: product-<название продукта> //шлем каждый продукт отдельно <br>
+            Label: comment //если если заполнен коммент<br>
+          </code>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3 class="block-title mark">Процесс создания связи</h3>
+        <p>Посмотрим, удаляют ли:
+          <ul>
+            <li>Добавленные организации</li>
+            <li>Выбранное контактное лицо</li>
+          </ul>
+        </p>
+        <div class="code">
+          <div class="code-title">Событие в GA</div>
+          <a href="https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide#intro" class="code-spec">спека</a>
+          <code>
+            Category: client-connection <br>
+            Action: creating <br>
+            Label: delete-client //ссылка «удалить» у клиента <br>
+            Label: delete-contact //ссылка «удалить» у контакта<br>
+          </code>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3 class="block-title">Ошибки</h3>
+        <p>Сколько возникает ошибка и что дальше при этом делают.</p>
+        <div class="code">
+          <div class="code-title">Событие в GA</div>
+          <a href="https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide#intro" class="code-spec">спека</a>
+          <code>
+            Category: client-connection <br>
+            Action: delete <br>
+            Label: delete-message //считаем, что показалось сообщение<br>
+            Label: delete-and-close //нажали на «удалить и закрыть»<br>
+          </code>
+        </div>
+      </div>
+
+
+    </section>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Детализация счета</title>
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="fonts.css">
+  <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+
+  <script type="text/javascript" src="jquery-2.2.3.min.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function() {
+
+   var $def = $(".default1");
+  /*   $def.click(function() {
+      $(".default1 + .header-dropping").toggleClass("first");
+      $(".first + .header-dropping").toggleClass("second");
+      $(".second + .header-dropping").toggleClass("third");
+    });
+*/
+    $def.click(function() {
+      $(".default1 > .header-subtitle").toggleClass("opened");
+      $(".header-dropping:nth-of-type(2)").toggleClass("first");
+      $(".header-dropping:nth-of-type(4)").toggleClass("second");
+      $(".header-dropping:nth-of-type(5)").toggleClass("third");
+    });
+  });
+	</script>
+</head>
+<body>
+  <header class="header">
+    <div class="header-fixed">
+      <h1 class="header-title">Метрики детализации счета</h1>
+    </div>
+
+    <div class="header-dropping">
+      <a href="index.html" class="header-subtitle">Общие метрики</a>
+    </div>
+
+    <div class="header-dropping default1">
+      <h2 href="certs.html" class="header-subtitle">Серты</h2>
+    </div>
+
+    <div class="header-dropping">
+      <a href="subs.html" class="header-subtitle">Подписки</a>
+    </div>
+
+    <div class="header-dropping">
+      <a  href="docs.html" class="header-subtitle">Документы</a>
+    </div>
+
+  </header>
+
+  <div class="container">
+    <section class="tab-metrics">
+      <div class="block">
+        <h3 class="block-title">Переход с оферты на договор</h3>
+        <p>
+          Посмотрим, сколько пользуются.
+        </p>
+        <div class="code">
+          <div class="code-title">Событие в GA</div>
+          <a href="https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide#intro" class="code-spec">спека</a>
+          <code>
+            _trackEvent(category, action, opt_label, opt_value, opt_noninteraction)
+          </code>
+          <code>
+              //кнопка «перейти с оферты на договор» <br>
+              Category: bill-certs <br>
+              Action: click <br>
+              Label: change-offer <br>
+          </code>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3 class="block-title">Удаление формы (бывшее «заменить»)</h3>
+        <p>Главная цель—понять, сколько раз «ошибаются», в свое время жалоб было много.
+          Когда сделаем восстановление, будем анализировать такие «ошибки».
+        </p>
+        <div class="code">
+          <div class="code-title">Событие в GA</div>
+          <a href="https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide#intro" class="code-spec">спека</a>
+          <!-- <code>
+            _trackEvent(category, action, opt_label, opt_value, opt_noninteraction)
+          </code> -->
+          <code>
+            // на действие «удалить» в трех точках <br>
+            Category: bill-certs <br>
+            Action: delete <br>
+            Label: delete-form <br>
+          </code>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3 class="block-title">Продление: смена владельца</h3>
+        <p>
+          Хотим посчитать, как часто меняют владельца.
+          В идеале посылать событие, когда мы в выпадашке поменяли владельца и
+          засабмитили это. План минимум—просто клики на ссылку «сменить владельца».
+        </p>
+        <div class="code">
+          <div class="code-title">Событие в GA</div>
+          <a href="https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide#intro" class="code-spec">спека</a>
+          <!-- <code>
+            _trackEvent(category, action, opt_label, opt_value, opt_noninteraction)
+          </code> -->
+          <code>
+            // План минимум: «сменить владельца» <br>
+            Category: bill-certs <br>
+            Action: change <br>
+            Label: owner-name <br>
+          </code>
+        </div>
+        <div class="line"></div>
+        <p>
+          Хотим померить, выбирают ли того же владельца после того, как нажали «сменить владельца».
+          Есть гипотеза, что будут искать отправку пустой формы и не найдут.
+        </p>
+        <div class="code">
+          <div class="code-title">Событие в GA</div>
+          <a href="https://developers.google.com/analytics/devguides/collection/gajs/gaTrackingCustomVariables#setup" class="code-spec">спека</a>
+          <!-- <code>
+            _setCustomVar(index, name, value, opt_scope)
+          </code> -->
+          <code>
+            Category: bill-certs <br>
+            Action: change <br>
+            Label: owner-name-old <br>
+          </code>
+      </div>
+      </div>
+      <!-- _gaq.push(['_setCustomVar', 2, 'forms-with-owner',   'N',  3 ]);
+      category:bill-certs, action: send-forms, label: with-owner. -->
+
+      <div class="block">
+        <h3 class="block-title">Количество пустых форм и форм с владельцем</h3>
+        <p>
+          Хотим понимать, сколько всего форм отправляется пустых и с заполненным владельцем.
+          Сравним, каких больше. Отправляем событие по сабмиту (клик по кнопке «опубликовать заявки»).
+        </p>
+        <div class="code">
+          <div class="code-title">Кастомные переменные в GA</div>
+          <a href="https://developers.google.com/analytics/devguides/collection/gajs/gaTrackingCustomVariables#setup" class="code-spec">спека</a>
+          <!-- <code>
+            _setCustomVar(index, name, value, opt_scope)
+          </code> -->
+          <code>
+            // Сколько форм отправили с фио <br>
+            Category: bill-certs <br>
+            Action: send-forms <br>
+            Label: with-owner <br>
+            Value: N // кол-во форм с владельцем <br>
+          </code>
+          <code>
+            // Сколько пустых форм отправили <br>
+            Category: bill-certs <br>
+            Action: send-forms <br>
+            Label: no-owner <br>
+            Value: N // кол-во пустых форм <br>
+          </code>
+
+        </div>
+      </div>
+
+      <div class="block">
+        <h3 class="block-title">Сколько форм публикуют за раз</h3>
+        <p>
+          Наскольк популярен сценарий «массовости». Сразу все отправляют или нет?
+        </p>
+        <div class="code">
+          <div class="code-title">Кастомные переменные в GA</div>
+          <a href="https://developers.google.com/analytics/devguides/collection/gajs/gaTrackingCustomVariables#setup" class="code-spec">спека</a>
+          <!-- <code>
+            _setCustomVar(index, name, value, opt_scope)
+          </code> -->
+          <code>
+            // Сколько форм отправили за раз <br>
+            Category: bill-certs <br>
+            Action: send-forms <br>
+            Label: total <br>
+            Value: N // кол-во форм, которые отправили из попапа за раз <br>
+          </code>
+        </div>
+      </div>
+
+      </div>
+
+    </section>
+  </div>
+
+</body>
+</html>

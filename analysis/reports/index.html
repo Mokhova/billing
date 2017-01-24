@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Отчёты</title>
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="fonts.css">
+  <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+
+  <script type="text/javascript" src="jquery-2.2.3.min.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function() {
+
+   var $def = $(".default1");
+  /*   $def.click(function() {
+      $(".default1 + .header-dropping").toggleClass("first");
+      $(".first + .header-dropping").toggleClass("second");
+      $(".second + .header-dropping").toggleClass("third");
+    });
+*/
+    $def.click(function() {
+      $(".default1 > .header-subtitle").toggleClass("opened");
+      $(".header-dropping:nth-of-type(3)").toggleClass("first");
+      $(".header-dropping:nth-of-type(4)").toggleClass("second");
+      $(".header-dropping:nth-of-type(5)").toggleClass("third");
+    });
+  });
+	</script>
+</head>
+<body>
+  <header class="header">
+    <div class="header-fixed">
+      <h1 class="header-title">Метрики отчетов</h1>
+    </div>
+  </header>
+
+  <div class="container">
+    <section class="tab-metrics">
+
+      <div class="block">
+        <h3 class="block-title">Отчет по счетам, оплатам и сделкам</h3>
+        <p>Хотим понимать, какие отчеты популярные, и какие параметры чаще выбирают.
+          Возможно будем запоминать необходимые.
+          По каждому отчету надо видеть отдельно: <br>
+          <ul>
+            <li>С какими именно датами грузили. Например, 1.08.2016</li>
+            <li>Какой диапазон выбирают: 10 дней, 15 дней.</li>
+          </ul>
+        </p>
+        <div class="code">
+          <div class="code-title">Событие в GA</div>
+          <a href="https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide#intro" class="code-spec">спека</a>
+          <!-- <code>
+            _trackEvent(category, action, opt_label, opt_value, opt_noninteraction)
+          </code> -->
+          <code>
+            Category: report-bills // отчет по выставленным счетам <br>
+            Category: report-payment // отчет по оплаченным счетам <br>
+            Category: report-deals // отчет по завершеннм сделкм <br>
+            Action: download <br>
+            Label: <br>
+            — N // N—это число дней, посчитать, сколько дней выбрали в попапе периода. <br>
+            — dd.mm.yyyy—dd.mm.yyyy или mm.yyyy // что конкретно выбрали в попапе <br>
+            — product-<имя продукта> // каждый продукт, который выбирали <br>
+          </code>
+
+          <code>
+            Category: report-pp // отчет по потенциальным продажам <br>
+            Action: download <br>
+            Label: <br>
+            — N // N—это число дней, посчитать, сколько дней выбрали в попапе периода. <br>
+            — dd.mm.yyyy—dd.mm.yyyy или mm.yyyy // что конкретно выбрали в попапе <br>
+            — product-<имя продукта> // каждый продукт, который выбирали <br>
+            — source-<имя источника> // источник, который выбирали в выпадашке<br>
+          </code>
+
+        </div>
+      </div>
+
+    </section>
+  </div>
+
+</body>
+</html>

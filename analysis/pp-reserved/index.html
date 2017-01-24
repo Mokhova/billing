@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Бронь по ПП</title>
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="fonts.css">
+  <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+
+  <script type="text/javascript" src="jquery-2.2.3.min.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function() {
+   var $def = $(".default1");
+  /*   $def.click(function() {
+      $(".default1 + .header-dropping").toggleClass("first");
+      $(".first + .header-dropping").toggleClass("second");
+      $(".second + .header-dropping").toggleClass("third");
+    });
+*/
+    $def.click(function() {
+      $(".default1 > .header-subtitle").toggleClass("opened");
+      $(".header-dropping:nth-of-type(3)").toggleClass("first");
+      $(".header-dropping:nth-of-type(4)").toggleClass("second");
+    });
+  });
+	</script>
+</head>
+<body>
+  <header class="header">
+    <div class="header-fixed">
+      <h1 class="header-title">Метрики бронирования по ПП</h1>
+    </div>
+
+    <div class="header-dropping default1">
+      <h2 class="header-subtitle">Редактирование реквизитов и продукта ПП</h2>
+    </div>
+
+    <div class="header-dropping">
+      <a href="create.html" class="header-subtitle">Создание ПП</a>
+    </div>
+
+    <div class="header-dropping">
+      <a href="create-from-client.html" class="header-subtitle">Создание ПП из карточки</a>
+    </div>
+
+  </header>
+
+  <div class="container">
+    <section class="tab-metrics">
+
+      <div class="block">
+        <h3 class="block-title">Ссылка «редактировать»</h3>
+        <p>Хотим посмотреть, сколько пользуются или хотя бы интересуются. <br>
+        </p>
+        <div class="code">
+          <div class="code-title">Событие в GA</div>
+          <a href="https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide#intro" class="code-spec">спека</a>
+          <code>
+            _trackEvent(category, action, opt_label, opt_value, opt_noninteraction)
+          </code>
+          <code>
+              Category: pp-reserved-edit <br>
+              Action: edit <br>
+              Label: link <br>
+          </code>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3 class="block-title">Форма редактирования</h3>
+        <p>Хочется понять, что именно редактируют. Отправляем события по сабмиту.
+          Отдельно хотим помечать те ПП, в которых указали реквизиты существующих клиентов.
+        </p>
+        <div class="code">
+          <div class="code-title">Событие в GA</div>
+          <a href="https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide#intro" class="code-spec">спека</a>
+          <code>
+            _trackEvent(category, action, opt_label, opt_value, opt_noninteraction)
+          </code>
+          <code>
+              Category: pp-reserved-edit <br>
+              Action: submit <br>
+              Label: props-inn // для поля ИНН <br>
+              Label: props-kpp // для поля КПП <br>
+              Label: props-name // для поля наименование <br>
+              Label: props-product // для поля продукт <br>
+          </code>
+
+          <code>
+            Category: pp-reserved-edit <br>
+            Action: submit <br>
+            Label: props-client-existing <br>
+          </code>
+
+        </div>
+      </div>
+
+      <div class="block">
+        <h3 class="block-title">Форма редактирования: ошибки</h3>
+        <p>Померяем, какие ошибки случаеются чаще. Может поймаем
+          кого-то за перебором клиентов, чтобы забронить =)
+          Отдельно хочется посчитать, смотрят ли контакты СЦ,
+          который уже забронил ПП.
+        </p>
+        <div class="code">
+          <div class="code-title">Событие в GA</div>
+          <a href="https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide#intro" class="code-spec">спека</a>
+          <!-- <code>
+            _trackEvent(category, action, opt_label, opt_value, opt_noninteraction)
+          </code> -->
+          <code>
+            // ошибки <br>
+            Category: pp-reserved-edit <br>
+            Action: show<br>
+            Label: error-other-service-center // когда клиента обслуживает другой СЦ<br>
+            Label: error-already-exist // когда такая ПП уже есть <br>
+          </code>
+
+          <code>
+            // кнопка «контакты СЦ» <br>
+            Category: pp-reserved-edit <br>
+            Action: click <br>
+            Label: error-contacts-of-service-center <br>
+          </code>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3 class="block-title">Цель смены реквизитов</h3>
+        <p>Хочется понять, зачем пошли в редактирование реквизитов ПП.
+          Для этого, если получится, хочется уметь различать ситуации,
+          когда реквизиты пустые, когда невалидные и когда валидные.
+        </p>
+        <div class="code">
+          <div class="code-title">Событие в GA</div>
+          <a href="https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide#intro" class="code-spec">спека</a>
+          <!-- <code>
+            _trackEvent(category, action, opt_label, opt_value, opt_noninteraction)
+          </code> -->
+          <code>
+            // пустые реквизиты <br>
+            Category: pp-reserved-edit <br>
+            Action: edit <br>
+            Label: reason-props-empty // когда реквизиты пустые<br>
+            Label: reason-props-incorrect // невалидные реквизиты<br>
+            Label: reason-props-correct // нужно указать другого плательщика <br>
+          </code>
+        </div>
+      </div>
+
+    </section>
+  </div>
+
+</body>
+</html>

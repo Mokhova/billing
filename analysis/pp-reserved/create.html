@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Бронь по ПП</title>
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="fonts.css">
+  <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+
+  <script type="text/javascript" src="jquery-2.2.3.min.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function() {
+
+   var $def = $(".default1");
+  /*   $def.click(function() {
+      $(".default1 + .header-dropping").toggleClass("first");
+      $(".first + .header-dropping").toggleClass("second");
+      $(".second + .header-dropping").toggleClass("third");
+    });
+*/
+    $def.click(function() {
+      $(".default1 > .header-subtitle").toggleClass("opened");
+      $(".header-dropping:nth-of-type(2)").toggleClass("first");
+      $(".header-dropping:nth-of-type(4)").toggleClass("second");
+    });
+  });
+	</script>
+</head>
+<body>
+  <header class="header">
+    <div class="header-fixed">
+      <h1 class="header-title">Метрики бронирования по ПП</h1>
+    </div>
+
+    <div class="header-dropping">
+      <a href="index.html" class="header-subtitle">Редактирование реквизитов и продукта ПП</a>
+    </div>
+
+    <div class="header-dropping default1">
+      <h2 class="header-subtitle">Создание ПП</h2>
+    </div>
+
+    <div class="header-dropping">
+      <a href="create-from-client.html" class="header-subtitle">Создание ПП из карточки</a>
+    </div>
+
+  </header>
+
+  <div class="container">
+    <section class="tab-metrics">
+      <div class="block">
+        <h3 class="block-title">Форма: первый шаг</h3>
+        <p>Схема как при загрузке excel: по сабмиту отправляем параметры.
+          Метрики написаны в порядке полей
+          <a href="https://ui.skbkontur.ru/Billy/partner/PP/reserved/create-pp/04-pp-create.png.htm" target="_blank">на прототипе</a>.
+          Хотелось бы понимать, сколько контактных лиц завели, сколько телефонов
+          у них указали. Для этого к полям ФИО и телефон надо дописывать кол-во в одной в форме. <br>
+          <strong>Совесем идеально:</strong> помечать, что столько телефонов на один контакт, столько-то—на другой.
+          Т.е. если добавили два контактных лица, у первого указали 3 телефона, у второго—5, то отправится два события с лейблами:
+          Label: contact-phone-3 и Label: contact-phone-5
+
+        </p>
+        <div class="code">
+          <div class="code-title">Событие в GA</div>
+          <a href="https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide#intro" class="code-spec">спека</a>
+          <!-- <code>
+            _trackEvent(category, action, opt_label, opt_value, opt_noninteraction)
+          </code> -->
+          <code>
+            // радиокнопки температуры<br>
+            Category: pp-create<br>
+            Action: submit-1step <br>
+            Label: cold //для холодной<br>
+            Label: warm //для теплой<br>
+            Label: hot //для горячей<br>
+            Label: product-<имя продукта кириллицей> <br>
+            Label: source-<имя источника кириллицей> <br>
+            Label: contact-name-<количество заполненных инпутов ФИО> <br>
+            Label: contact-job <br>
+          </code>
+
+          <code>
+            // хотелось бы отправлять, сколько всего телефонов было указано в одной форме для каждого контакта.
+            Уходить таких событий должно столько же, скольк указано контактных лиц.<br>
+            Label: contact-phone-<количество телефонов на один контакт> <br>
+            Label: contact-phone-additional <br>
+            Label: contact-email <br>
+          </code>
+
+          <code>
+            Label: manager-none // не назначен <br>
+            Label: manager-set <br>
+            Label: comment-empty // комментарий пустой <br>
+            Label: comment-filled // что-то написали  <br>
+          </code>
+        </div>
+      </div>
+
+
+      <div class="block">
+        <h3 class="block-title">Форма: второй шаг</h3>
+        <p>Схема как при загрузке ПП из excel: по сабмиту отправляем параметры.
+          Отдельно хотим помечать те ПП, которые созданы на существующих клиентов.
+        </p>
+        <div class="code">
+          <div class="code-title">Событие в GA</div>
+          <a href="https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide#intro" class="code-spec">спека</a>
+          <!-- <code>
+            _trackEvent(category, action, opt_label, opt_value, opt_noninteraction)
+          </code> -->
+          <code>
+            Category: pp-create <br>
+            Action: submit-2step <br>
+            Label: props-inn // для поля ИНН <br>
+            Label: props-kpp // для поля КПП <br>
+            Label: props-name // для поля наименование <br>
+            Label: props-empty // если ничего не заполнили <br>
+          </code>
+
+          <code>
+            Category: pp-create <br>
+            Action: submit-2step <br>
+            Label: props-client-existing <br>
+          </code>
+
+        </div>
+      </div>
+
+      <div class="block">
+        <h3 class="block-title">Форма: ошибки</h3>
+        <p>Померяем ошибки, которые могут возникнуть на втором шаге.
+        </p>
+        <div class="code">
+          <div class="code-title">Событие в GA</div>
+          <a href="https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide#intro" class="code-spec">спека</a>
+          <!-- <code>
+            _trackEvent(category, action, opt_label, opt_value, opt_noninteraction)
+          </code> -->
+          <code>
+            // ошибки <br>
+            Category: pp-create <br>
+            Action: show <br>
+            Label: error-other-service-center // когда клиента обслуживает другой СЦ<br>
+            Label: error-already-exist // когда такая ПП уже есть <br>
+          </code>
+
+          <code>
+            // кнопка «контакты СЦ» <br>
+            Category: pp-create <br>
+            Action: click <br>
+            Label: error-contacts-of-service-center <br>
+          </code>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3 class="block-title">Уход с формы</h3>
+        <p>Смотрим, кто уходит с формы, не заполнив ее до конца.
+          Будем сравнивать, сколько открыли, и сколько из них отправили форму,
+          а сколько просто ушли.
+        </p>
+        <div class="code">
+          <div class="code-title">Событие в GA</div>
+          <a href="https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide#intro" class="code-spec">спека</a>
+          <!-- <code>
+            _trackEvent(category, action, opt_label, opt_value, opt_noninteraction)
+          </code> -->
+          <code>
+            // крестик <br>
+            Category: pp-create <br>
+            Action: close <br>
+            Label: lightbox-cross <br>
+          </code>
+
+          <code>
+            // отмена <br>
+            Category: pp-create <br>
+            Action: cancel <br>
+            Label: lightbox-cancel <br>
+          </code>
+
+        </div>
+      </div>
+
+
+    </section>
+  </div>
+
+</body>
+</html>

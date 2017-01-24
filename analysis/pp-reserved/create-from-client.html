@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Бронь по ПП</title>
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="fonts.css">
+  <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+
+  <script type="text/javascript" src="jquery-2.2.3.min.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function() {
+
+   var $def = $(".default1");
+  /*   $def.click(function() {
+      $(".default1 + .header-dropping").toggleClass("first");
+      $(".first + .header-dropping").toggleClass("second");
+      $(".second + .header-dropping").toggleClass("third");
+    });
+*/
+    $def.click(function() {
+      $(".default1 > .header-subtitle").toggleClass("opened");
+      $(".header-dropping:nth-of-type(2)").toggleClass("first");
+      $(".header-dropping:nth-of-type(3)").toggleClass("second");
+    });
+  });
+	</script>
+</head>
+<body>
+  <header class="header">
+    <div class="header-fixed">
+      <h1 class="header-title">Метрики бронирования по ПП</h1>
+    </div>
+
+    <div class="header-dropping">
+      <a href="index.html" class="header-subtitle">Редактирование реквизитов и продукта ПП</a>
+    </div>
+
+    <div class="header-dropping">
+      <a href="create.html" class="header-subtitle">Создание ПП</a>
+    </div>
+
+    <div class="header-dropping default1">
+      <h2 class="header-subtitle">Создание ПП из карточки</h2>
+    </div>
+
+  </header>
+
+  <div class="container">
+    <section class="tab-metrics">
+      <div class="block">
+        <h3 class="block-title">Форма</h3>
+        <p>
+          <a href="https://ui.skbkontur.ru/Billy/partner/PP/reserved/create-pp/from-client/02-pp-create-from-client.png.htm">Создание из карточки</a>
+          отличается тем, что мы знаем клиента, т.е. нет второго шага, появляется тип
+          и часть полей предзаполнены.
+        </p>
+        <div class="code">
+          <div class="code-title">Событие в GA</div>
+          <a href="https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide#intro" class="code-spec">спека</a>
+          <!-- <code>
+            _trackEvent(category, action, opt_label, opt_value, opt_noninteraction)
+          </code> -->
+          <code>
+            Category: pp-create-from-client <br>
+            Action: submit <br>
+            Label: type-connection //подключение<br>
+            Label: type-prolongation //продление<br>
+            Label: cold //для холодной<br>
+            Label: warm //для теплой<br>
+            Label: hot //для горячей<br>
+            Label: product-<имя продукта кириллицей> <br>
+            Label: source-<имя источника кириллицей> <br>
+            Label: contact-<количество выбранных КЛ> // т.е. кол-во выпадашек <br>
+          </code>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3 class="block-title">Форма: контактное лицо—руководитель</h3>
+        <p>
+          Хотим понимать, выбирают ли руководителя в качестве контактного лица.
+        </p>
+        <div class="code">
+          <div class="code-title">Событие в GA</div>
+          <a href="https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide#intro" class="code-spec">спека</a>
+          <!-- <code>
+            _trackEvent(category, action, opt_label, opt_value, opt_noninteraction)
+          </code> -->
+          <code>
+            Category: pp-create-from-client <br>
+            Action: submit <br>
+            Label: contact-chief <br>
+          </code>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3 class="block-title">Уход с формы</h3>
+        <p>Смотрим, кто уходит с формы, не заполнив ее до конца.
+          Будем сравнивать, сколько открыли, и сколько из них отправили форму,
+          а сколько просто ушли.
+        </p>
+        <div class="code">
+          <div class="code-title">Событие в GA</div>
+          <a href="https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide#intro" class="code-spec">спека</a>
+          <!-- <code>
+            _trackEvent(category, action, opt_label, opt_value, opt_noninteraction)
+          </code> -->
+          <code>
+            // крестик <br>
+            Category: pp-create-from-client <br>
+            Action: close <br>
+            Label: lightbox-cross <br>
+          </code>
+
+          <code>
+            // отмена <br>
+            Category: pp-create-from-client <br>
+            Action: cancel <br>
+            Label: lightbox-cancel <br>
+          </code>
+
+        </div>
+      </div>
+
+      </div>
+
+    </section>
+  </div>
+
+</body>
+</html>

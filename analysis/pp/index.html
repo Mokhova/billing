@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Excel в ПП</title>
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="fonts.css">
+  <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+
+  <script type="text/javascript" src="jquery-2.2.3.min.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function() {
+
+   var $def = $(".default1");
+  /*   $def.click(function() {
+      $(".default1 + .header-dropping").toggleClass("first");
+      $(".first + .header-dropping").toggleClass("second");
+      $(".second + .header-dropping").toggleClass("third");
+    });
+*/
+    $def.click(function() {
+      $(".default1 > .header-subtitle").toggleClass("opened");
+      $(".header-dropping:nth-of-type(3)").toggleClass("first");
+      $(".header-dropping:nth-of-type(4)").toggleClass("second");
+      $(".header-dropping:nth-of-type(5)").toggleClass("third");
+    });
+  });
+	</script>
+</head>
+<body>
+  <header class="header">
+    <div class="header-fixed">
+      <h1 class="header-title">Метрики загрузки Excel в ПП</h1>
+    </div>
+
+    <div class="header-dropping default1">
+      <h2 class="header-subtitle">Форма загрузки</h2>
+    </div>
+
+    <div class="header-dropping">
+      <a href="errors.html" class="header-subtitle">Ошибки в лайтбоксе</a>
+    </div>
+
+    <div class="header-dropping">
+      <a href="results.html" class="header-subtitle">Результат загрузки</a>
+    </div>
+
+    <div class="header-dropping">
+      <a href="other.html" class="header-subtitle">Прочее</a>
+    </div>
+
+
+  </header>
+
+  <div class="container">
+    <section class="tab-metrics">
+
+      <div class="block">
+        <h3 class="block-title">Менеджер, который загрузил список, и дата</h3>
+        <p>Интересно, кто грузит списки. Возможно кастомизируем форму в зависимости от пользователя.
+          Плюс будем знать контакты. <br>
+          Чтобы не мешать с обычными событиями, будем отдельно отправлять все те же самые события,
+          но только с правильным action. Т.о. по сабмиту будут уходить сразу два события
+          по каждому из полей: одно без менеджера и даты, другое—с менеджером и датой.
+        </p>
+        <div class="code">
+          <div class="code-title">Событие в GA</div>
+          <a href="https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide#intro" class="code-spec">спека</a>
+          <code>
+            _trackEvent(category, action, opt_label, opt_value, opt_noninteraction)
+          </code>
+          <code>
+              Category: pp-excel-upload <br>
+              Action: upload-01.07.2016-080011 // дата загрузки и промокод менеджера<br>
+              Label: button-main <br>
+          </code>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3 class="block-title">Главная кнопка</h3>
+        <p>Хотим понимать, знают ли о ней вообще.
+        </p>
+        <div class="code">
+          <div class="code-title">Событие в GA</div>
+          <a href="https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide#intro" class="code-spec">спека</a>
+          <code>
+            _trackEvent(category, action, opt_label, opt_value, opt_noninteraction)
+          </code>
+          <code>
+              Category: pp-excel-upload <br>
+              Action: upload <br>
+              Label: button-main <br>
+          </code>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3 class="block-title">Форма: температура</h3>
+        <p>Хотим понимать, какую температуру чаще грузят, чтобы сделать предустановку
+        </p>
+        <div class="code">
+          <div class="code-title">Событие в GA</div>
+          <a href="https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide#intro" class="code-spec">спека</a>
+          <!-- <code>
+            _trackEvent(category, action, opt_label, opt_value, opt_noninteraction)
+          </code> -->
+          <code>
+            // радиокнопки <br>
+            Category: pp-excel-upload <br>
+            Action: submit <br>
+            Label: cold //для холодной<br>
+            Label: warm //для теплой<br>
+          </code>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3 class="block-title">Форма: тип</h3>
+        <p>Что же чаще: продление или подключение? Вдруг у нас все только из каб.прода грузят.
+        </p>
+        <div class="code">
+          <div class="code-title">Событие в GA</div>
+          <a href="https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide#intro" class="code-spec">спека</a>
+          <!-- <code>
+            _trackEvent(category, action, opt_label, opt_value, opt_noninteraction)
+          </code> -->
+          <code>
+            // радиокнопки <br>
+            Category: pp-excel-upload <br>
+            Action: submit <br>
+            Label: type-prolongation //продление<br>
+            Label: type-connection //подключение<br>
+          </code>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3 class="block-title">Форма: источник</h3>
+        <p>Хотим понимать, какими источниками пользуются. Может уберем ненужные,
+          и/или ранжируем их лучше.
+        </p>
+        <div class="code">
+          <div class="code-title">Событие в GA</div>
+          <a href="https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide#intro" class="code-spec">спека</a>
+          <!-- <code>
+            _trackEvent(category, action, opt_label, opt_value, opt_noninteraction)
+          </code> -->
+          <code>
+            // Обслуживает СЦ <br>
+            Category: pp-excel-upload <br>
+            Action: submit <br>
+            Label: source-iruc // ИРУЦ<br>
+            Label: source-service-center // клиенты СЦ <br>
+            Label: source-ko-... // все KO-... пишем просто латиницей, как в выпадашке <br>
+            Label: source-lead // лид <br>
+            Label: source-event // мероприятие <br>
+            Label: source-egrul // регистрация в ЕГРЮЛ <br>
+            Label: source-togs // регистрация в ТОГС <br>
+            Label: source-other // прочее <br>
+          </code>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3 class="block-title">Форма: продукты</h3>
+        <p>Хотим сократить портянку продуктов и выделить топ. Таким образом поделим форму на «топ-10/15»,
+          а остальное скроем за ссылкой «все».
+        </p>
+        <div class="code">
+          <div class="code-title">Событие в GA</div>
+          <a href="https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide#intro" class="code-spec">спека</a>
+          <!-- <code>
+            _trackEvent(category, action, opt_label, opt_value, opt_noninteraction)
+          </code> -->
+          <code>
+            // радиокнопки <br>
+            Category: pp-excel-upload <br>
+            Action: submit <br>
+            Label: product-<имя продукта латиницей> //продление<br>
+          </code>
+        </div>
+      </div>
+
+
+      <div class="block">
+        <h3 class="block-title">Форма: менеджер</h3>
+        <p>Хотим понимать, что чаще: список без менеджера или с назначением.
+          Опять же может сможем адаптировать форму, вдруг назначют одних и тех же.
+        </p>
+        <div class="code">
+          <div class="code-title">Событие в GA</div>
+          <a href="https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide#intro" class="code-spec">спека</a>
+          <!-- <code>
+            _trackEvent(category, action, opt_label, opt_value, opt_noninteraction)
+          </code> -->
+          <code>
+            Category: pp-excel-upload <br>
+            Action: submit <br>
+            Label: manager-none // не назначен<br>
+            Label: manager-set <br>
+            Label: manager-set-... // окончание—промокод и фио, хочется понимать, кого назначили. <br>
+          </code>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3 class="block-title">Правая панель</h3>
+        <p>Поймем, как часто ошибаются в выборе файла и загружает из-за этого другой. Читают ли требования вообще.
+        </p>
+        <div class="code">
+          <div class="code-title">Событие в GA</div>
+          <a href="https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide#intro" class="code-spec">спека</a>
+          <!-- <code>
+            _trackEvent(category, action, opt_label, opt_value, opt_noninteraction)
+          </code> -->
+          <code>
+            // кнопка «выбрать другой excel» <br>
+            Category: pp-excel-upload <br>
+            Action: upload <br>
+            Label: button-upload-another<br>
+          </code>
+
+          <code>
+            // ссылка «требования к файлу» <br>
+            Category: pp-excel-upload <br>
+            Action: read <br>
+            Label: file-requirements<br>
+          </code>
+
+          <code>
+            // ссылка «пример файла» <br>
+            Category: pp-excel-upload <br>
+            Action: read <br>
+            Label: file-example<br>
+          </code>
+
+          <code>
+            // ссылка «скачать шаблон» <br>
+            Category: pp-excel-upload <br>
+            Action: download <br>
+            Label: file-template<br>
+          </code>
+
+        </div>
+      </div>
+
+      <div class="block">
+        <h3 class="block-title">Кнопка «создать»</h3>
+        <p>Вдруг для сегментов понадобится =)
+        </p>
+        <div class="code">
+          <div class="code-title">Событие в GA</div>
+          <a href="https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide#intro" class="code-spec">спека</a>
+          <!-- <code>
+            _trackEvent(category, action, opt_label, opt_value, opt_noninteraction)
+          </code> -->
+          <code>
+            Category: pp-excel-upload <br>
+            Action: submit <br>
+            Label: button-submit<br>
+          </code>
+
+        </div>
+      </div>
+    </section>
+  </div>
+
+</body>
+</html>

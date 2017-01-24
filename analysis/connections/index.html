@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Метрики связей</title>
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="fonts.css">
+  <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+
+  <script type="text/javascript" src="jquery-2.2.3.min.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function() {
+
+   var $def = $(".default1");
+  /*   $def.click(function() {
+      $(".default1 + .header-dropping").toggleClass("first");
+      $(".first + .header-dropping").toggleClass("second");
+      $(".second + .header-dropping").toggleClass("third");
+    });
+*/
+    $def.click(function() {
+      $(".default1 > .header-subtitle").toggleClass("opened");
+      $(".header-dropping:nth-of-type(3)").toggleClass("first");
+      $(".header-dropping:nth-of-type(4)").toggleClass("second");
+      $(".header-dropping:nth-of-type(5)").toggleClass("third");
+    });
+  });
+	</script>
+</head>
+<body>
+  <header class="header">
+    <div class="header-fixed">
+      <h1 class="header-title">Метрики связанных организаций</h1>
+    </div>
+
+    <div class="header-dropping default1">
+      <h2 class="header-subtitle">Принцип сбора метрик</h2>
+    </div>
+
+    <div class="header-dropping">
+      <a href="create.html" class="header-subtitle">Создание</a>
+    </div>
+
+    <div class="header-dropping">
+      <a href="edit.html" class="header-subtitle">Редактирование</a>
+    </div>
+
+    <div class="header-dropping">
+      <a href="show.html" class="header-subtitle">Просмотр</a>
+    </div>
+
+
+  </header>
+
+  <div class="container">
+    <section class="tab-metrics">
+
+      <div class="block">
+        <ol>
+          <li>Все события помечаем идентификатором, чтобы можно было видеть,
+            что они относятся к одной связи.
+            <code class="example">
+              Category: client-connection <br>
+              Action: <название действия>-<идентификатор> <br>
+              Label: create-link <br>
+            </code>
+        </li>
+          <li>Дублируем все события без идентификатора, чтобы без фильтров можно было
+          понять динамику по каждому из них.
+            <code class="example">
+              Category: client-connection <br>
+              Action: <название действия> <br>
+              Label: create-link <br>
+            </code>
+        </li>
+          <li>Все события отправляем по какому-то завершающему действию (сабмит, показать, т.д.),
+              чтобы не засорять аналитику тем, что пользователь перетыкивает по 10 раз. Нас интересует
+              конечный набор параметров. Исключения из этого правила буду описаны и помечены <span class="icon"></span>.
+          </li>
+        </ol>
+      </div>
+
+
+
+    </section>
+  </div>
+
+</body>
+</html>
