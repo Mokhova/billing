@@ -11,6 +11,7 @@
 body {
   font-family: 'Proxima Nova';
   font-weight: normal;
+  padding-bottom: 100px;
 }
 
 .container {
@@ -191,13 +192,6 @@ ul > li::before {
   color: #FFD551;
 }
 
-h3.mark::before {
-  content: '\E06B';
-  font-family: 'Kontur-Iconic';
-  color: #FFD551;
-  margin-left: -29px;
-  padding-right: 5px;
-}
 
 img {
   margin-bottom: 20px;
@@ -206,5 +200,37 @@ img {
 
 .highlight {
   display: inline-block;
-  background-color: #FFD551;
+  background-color: #FF7F73;
+  color: #fff;
+  padding: 2px 7px;
+  margin-left: -7px;
+}
+
+ol > li {
+  list-style-type: decimal;
+}
+
+.label {
+  background-color: #ffebba;
+  color: #de9300;
+  /*background-color: #FF7F73;
+  color: #fff;*/
+  display: inline-block;
+  padding: 1px 10px 2px;
+  font-weight: 800;
+  margin: 0 5px 0 0;
+  font-size: 16px;
+}
+
+.label-container {
+  margin: 10px 0 15px 20px;
+}
+
+
+.attention {
+  font-size: 20px;
+  font-family: 'Georgia';
+  font-style: italic;
+  color: #474747;
+  line-height: 1.3;
 }
