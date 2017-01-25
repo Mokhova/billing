@@ -54,9 +54,9 @@
   <div class="container">
     <section class="tab-metrics">
       <div class="block">
-        <h3 class="block-title">Создать связь из блока контакты</h3>
-        <p>Сколько людей создают новые связи, несмотря на миграцию КС. <br></p>
-        <img src="img/5.png" alt="скрин связей" width="650px">
+        <h3 class="block-title">Переход к редактированию</h3>
+        <p>Интересно понять, как живут связи во времени. <br></p>
+        <img src="img/9.png" alt="скрин связей" width="650px">
         <div class="code">
           <div class="code-title">Событие в GA</div>
           <a href="https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide#intro" class="code-spec">спека</a>
@@ -66,11 +66,30 @@
           <code>
               Category: client-connection <br>
               Action: click <br>
-              Label: create-link <br>
+              Label: edit-link <br>
           </code>
-        <div class="label-container"> <!--⤳-->
-          <span class="label">отправить сразу</span>
-        </div>
+          <div class="label-container"> <!--⤳-->
+            <span class="label">отдельно с id</span>
+            <span class="label">в кучу</span>
+          </div>
+      </div>
+    </div>
+
+    <div class="block">
+      <h3 class="block-title">Что отредактировали</h3>
+      <p>
+        Отправляем только те параметры, которые поменялись! <br>
+        Механизм и лейблы, как при создании: <a href="./create.html#createPar">по ссылке «показать»</a>
+        и <a href="./create.html#createDel">удаление контакта/клиента на лету</a>.
+      </p>
+      <div class="code">
+        <div class="code-title">Событие в GA</div>
+        <a href="https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide#intro" class="code-spec">спека</a>
+        <code>
+          Category: client-connection <br>
+          Action: edit <br>
+          Label: —все измененные параметры <br>
+        </code>
       </div>
     </div>
     </section>
