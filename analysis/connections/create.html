@@ -149,9 +149,11 @@
           <ul>
             <li>Добавленные организации</li>
             <li>Выбранное контактное лицо</li>
+            <li>Всю связь</li>
           </ul>
         </p>
         <img src="img/10.png" alt="скрин связей" width="650px">
+        <img src="img/11.png" alt="скрин связей" width="650px">
         <div class="code">
           <div class="code-title">Событие в GA</div>
           <a href="https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide#intro" class="code-spec">спека</a>
@@ -160,6 +162,7 @@
             Action: create <br>
             Label: delete-client //ссылка «удалить» у клиента <br>
             Label: delete-contact //ссылка «удалить» у контакта<br>
+            Label: delete-and-close //нажали на «удалить и закрыть»<br>
           </code>
           <div class="label-container">
             <span class="label">отдельно с id</span>
@@ -180,7 +183,6 @@
             Category: client-connection <br>
             Action: create <br>
             Label: delete-message //считаем, что показалось сообщение<br>
-            Label: delete-and-close //нажали на «удалить и закрыть»<br>
           </code>
           <div class="label-container">
             <span class="label">в кучу</span>
