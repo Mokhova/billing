@@ -1,9 +1,3 @@
-.clearfix::after {
-    content: '';
-    display: table;
-    clear: both;
-}
-
 .instructions {
   position: fixed;
   bottom: 0;
@@ -13,31 +7,42 @@
   left: 50%;
   background-color: rgba(25, 33, 53, 0.8);
   color: #fff;
+  box-sizing: border-box;
 }
 
 .instructions-content {
   position: relative;
-  max-width: 1000px;
+  margin: 0 auto;
+  max-width: 900px;
+  min-width: 600px;
   min-height: 55px;
   width: 70%;
-  padding: 10px 15px;
+  padding: 7px 15px 10px;
   display: flex;
-  /*justify-content: space-between;*/
+  justify-content: space-between;
   align-items: center;
-  border: 1px solid white;
+  align-content: space-between;
+  flex-wrap: wrap;
+  /*для отладки
+  border: 1px solid white;*/
 }
 
 .instructions-text {
-  /*float: left;*/
-  width: 74%;
+  flex-grow: 4;
+  width: 75%;
   margin: 0 15px 0 0;
-  border: 1px solid white;
+  /*для отладки
+  border: 1px solid white;*/
 }
 
 .instructions-action {
-  /*top: 50%;*/
-  /*margin: 0 0 -50% 0;*/
-  width: 21%;
-  /*float: right;*/
-  border: 1px solid white;
+  width: 200px;
+  flex-shrink: 0;
+  margin: 10px 0;
+  /*для отладки
+  border: 1px solid white;*/
+}
+
+.instructions-action .button {
+  flex-shrink: 0;
 }
