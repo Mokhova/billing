@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Метрики связей</title>
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="fonts.css">
+  <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+
+  <script type="text/javascript" src="jquery-2.2.3.min.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function() {
+
+   var $def = $(".default1");
+  /*   $def.click(function() {
+      $(".default1 + .header-dropping").toggleClass("first");
+      $(".first + .header-dropping").toggleClass("second");
+      $(".second + .header-dropping").toggleClass("third");
+    });
+*/
+    $def.click(function() {
+      $(".default1 > .header-subtitle").toggleClass("opened");
+      $(".header-dropping:nth-of-type(2)").toggleClass("first");
+      $(".header-dropping:nth-of-type(3)").toggleClass("second");
+      $(".header-dropping:nth-of-type(4)").toggleClass("third");
+    });
+  });
+	</script>
+</head>
+<body>
+  <header class="header">
+    <div class="header-fixed">
+      <h1 class="header-title">Метрики связанных организаций</h1>
+    </div>
+
+    <div class="header-dropping">
+      <a href="index.html" class="header-subtitle">Принцип сбора метрик</a>
+    </div>
+
+    <div class="header-dropping">
+      <a href="create.html" class="header-subtitle">Создание</a>
+    </div>
+
+    <div class="header-dropping">
+      <a href="edit.html" class="header-subtitle">Редактирование</a>
+    </div>
+
+    <div class="header-dropping default1">
+      <h2 class="header-subtitle">Просмотр</h2>
+    </div>
+
+  </header>
+
+  <div class="container">
+    <section class="tab-metrics">
+      <div class="block">
+        <h3 class="block-title">Открыть связь</h3>
+        <p>Интересно, как часто смотрят связи <br></p>
+        <img src="img/5.png" alt="скрин связей" width="650px">
+        <div class="code">
+          <div class="code-title">Событие в GA</div>
+          <a href="https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide#intro" class="code-spec">спека</a>
+          <code>
+            _trackEvent(category, action, opt_label, opt_value, opt_noninteraction)
+          </code>
+          <code>
+              Category: client-connection <br>
+              Action: view-open <br>
+              Label: view-connetion <br>
+          </code>
+          <div class="label-container"> <!--⤳-->
+            <span class="label">отдельно с id</span>
+            <span class="label">в кучу</span>
+          </div>
+      </div>
+    </div>
+
+    <div class="block">
+      <h3 class="block-title">Посмотреть данные о контактном лице</h3>
+      <p>Наша гипотеза в том, что телефоны, почты и т.д. нужны только, в какой-то
+      опредленный момент, а не при каждом просмотре связи. Проверим эту гипотезу.</p>
+      <img src="img/6.png" alt="скрин связей" width="650px">
+      <div class="code">
+        <div class="code-title">Событие в GA</div>
+        <a href="https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide#intro" class="code-spec">спека</a>
+        <code>
+          _trackEvent(category, action, opt_label, opt_value, opt_noninteraction)
+        </code>
+        <code>
+            Category: client-connection <br>
+            Action: view <br>
+            Label: contact-details <br>
+        </code>
+        <div class="label-container"> <!--⤳-->
+          <span class="label">отдельно с id</span>
+          <span class="label">в кучу</span>
+        </div>
+    </div>
+  </div>
+
+  <div class="block">
+    <h3 class="block-title">Показать контакт в карточке</h3>
+    <p>Посмотрим, понятная ли фича, и востребована ли она.</p>
+    <img src="img/7.png" alt="скрин связей" width="650px">
+    <div class="code">
+      <div class="code-title">Событие в GA</div>
+      <a href="https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide#intro" class="code-spec">спека</a>
+      <code>
+        _trackEvent(category, action, opt_label, opt_value, opt_noninteraction)
+      </code>
+      <code>
+          Category: client-connection <br>
+          Action: view <br>
+          Label: see-contact-link <br>
+      </code>
+      <div class="label-container"> <!--⤳-->
+        <span class="label">отдельно с id</span>
+        <span class="label">в кучу</span>
+      </div>
+  </div>
+</div>
+
+<div class="block">
+  <h3 class="block-title">Свернуть комментарий</h3>
+  <p>Комментарии—новая функциональность, и непонятно, для чего их будут использовать.
+  Поэтому пока комментарий в просмотре выводим польностью. По сворачиванию косвенно поймем,
+  что он им мешает при просмотре, т.к. занимает много по длинне.  </p>
+  <img src="img/8.png" alt="скрин связей" width="650px">
+  <div class="code">
+    <div class="code-title">Событие в GA</div>
+    <a href="https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide#intro" class="code-spec">спека</a>
+    <code>
+      _trackEvent(category, action, opt_label, opt_value, opt_noninteraction)
+    </code>
+    <code>
+        Category: client-connection <br>
+        Action:  view <br>
+        Label: collapse-comment <br>
+    </code>
+    <div class="label-container"> <!--⤳-->
+      <span class="label">отдельно с id</span>
+      <span class="label">в кучу</span>
+    </div>
+</div>
+</div>
+    </section>
+  </div>
+
+</body>
+</html>

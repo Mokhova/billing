@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Метрики связей</title>
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="fonts.css">
+  <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+
+  <script type="text/javascript" src="jquery-2.2.3.min.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function() {
+
+   var $def = $(".default1");
+  /*   $def.click(function() {
+      $(".default1 + .header-dropping").toggleClass("first");
+      $(".first + .header-dropping").toggleClass("second");
+      $(".second + .header-dropping").toggleClass("third");
+    });
+*/
+    $def.click(function() {
+      $(".default1 > .header-subtitle").toggleClass("opened");
+      $(".header-dropping:nth-of-type(2)").toggleClass("first");
+      $(".header-dropping:nth-of-type(3)").toggleClass("second");
+      $(".header-dropping:nth-of-type(4)").toggleClass("third");
+    });
+  });
+	</script>
+</head>
+<body>
+  <header class="header">
+    <div class="header-fixed">
+      <h1 class="header-title">Метрики связанных организаций</h1>
+    </div>
+
+    <div class="header-dropping">
+      <a href="index.html" class="header-subtitle">Принцип сбора метрик</a>
+    </div>
+
+    <div class="header-dropping">
+      <a href="create.html" class="header-subtitle">Создание</a>
+    </div>
+
+    <div class="header-dropping">
+      <a href="show.html" class="header-subtitle">Просмотр</a>
+    </div>
+
+    <div class="header-dropping default1">
+      <h2 class="header-subtitle">Редактирование</h2>
+    </div>
+
+  </header>
+
+  <div class="container">
+    <section class="tab-metrics">
+      <div class="block">
+        <h3 class="block-title">Переход к редактированию</h3>
+        <p>Интересно понять, как живут связи во времени. <br></p>
+        <img src="img/9.png" alt="скрин связей" width="650px">
+        <div class="code">
+          <div class="code-title">Событие в GA</div>
+          <a href="https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide#intro" class="code-spec">спека</a>
+          <code>
+            _trackEvent(category, action, opt_label, opt_value, opt_noninteraction)
+          </code>
+          <code>
+              Category: client-connection <br>
+              Action: edit-click <br>
+              Label: edit-link <br>
+          </code>
+          <div class="label-container"> <!--⤳-->
+            <span class="label">отдельно с id</span>
+            <span class="label">в кучу</span>
+          </div>
+      </div>
+    </div>
+
+    <div class="block">
+      <h3 class="block-title">Что отредактировали</h3>
+      <p>
+        Отправляем только те параметры, которые поменялись! <br>
+        Механизм и лейблы, как при создании: <a href="./create.html#createPar">по ссылке «показать»</a>
+        и <a href="./create.html#createDel">удаление контакта/клиента на лету</a>.
+      </p>
+      <div class="code">
+        <div class="code-title">Событие в GA</div>
+        <a href="https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide#intro" class="code-spec">спека</a>
+        <code>
+          Category: client-connection <br>
+          Action: edit <br>
+          Label: —все измененные параметры <br>
+        </code>
+      </div>
+    </div>
+    </section>
+  </div>
+
+</body>
+</html>
