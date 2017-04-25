@@ -38,11 +38,11 @@
     </div>
 
     <div class="header-dropping">
-      <a href="scommon.html" class="header-subtitle">Общее</a>
+      <a href="header.html" class="header-subtitle">Шапка</a>
     </div>
 
     <div class="header-dropping">
-      <a href="edit.html" class="header-subtitle">Редактирование</a>
+      <a href="actions.html" class="header-subtitle">Панель действий</a>
     </div>
 
     <div class="header-dropping">
@@ -55,46 +55,44 @@
     <section class="tab-metrics">
       <p class="attention">
         Теперь все метрики будут получать лейблы. <br>
-        Если стоит лейбл—значит этот метод сбора нужно применить к объекту.
-        Если лейблов несколько—собираем метрики всеми способами.
+        Лейбл—это способ сбора метрик. Несколько лейблов—значит используем несколько способов.
       </p>
       <div class="block">
-        <h3 class="block-title">Статистика по конкретному объекту</h3>
+        <h3 class="block-title"><span class="label label-big">отдельно с id</span> — cтатистика по конкретному объекту</h3>
         <p>
           Конкретный счет, конкретная связь, конкретный клиент и т.д. <br>
           Это нужно, чтобы понять, насколько плотно взаимодействуют с конкретным объектом,
           как часто. Таким методом пользуемся только тогда, когда в урле нет id объекта. <br>
           Поэтому привисываем в action какой-то идентификатор объекта.
         </p>
-        <span class="label">отдельно с id</span>
+
         <code class="example">
-          Category: client-connection <br>
-          Action: <название действия>-id-<идентификатор> <br>
-          Label: create-link <br>
+          Category: bill <br>
+          Action: <название действия>-id-<идентификатор счета> <br>
+          Label: какой-то лейбл =) <br>
         </code>
       </div>
 
       <div class="block">
-        <h3 class="block-title">Общая статистика по сценарию</h3>
+        <h3 class="block-title"><span class="label label-big">в кучу</span> — общая статистика по всем объектам </h3>
         <p>
           Все события отправляем по какому-то завершающему действию (сабмит, показать, т.д.),
           чтобы не засорять аналитику тем, что пользователь перетыкивает по 10 раз. Нас интересует
           конечный набор параметров.
         </p>
-        <span class="label">в кучу</span>
+
         <code class="example">
-          Category: client-connection <br>
+          Category: bill <br>
           Action: <название действия><br>
-          Label: create-link <br>
+          Label: какой-то лейбл =) <br>
         </code>
       </div>
 
       <div class="block">
-        <h3 class="block-title">Cтатистика по взаимодействию</h3>
+        <h3 class="block-title"><span class="label label-big">отправить сразу</span> — статистика по взаимодействию </h3>
         <p>
           Бывают исключения, когда событие надо отправить сразу, как оно произошло
         </p>
-        <span class="label">отправить сразу</span>
       </div>
   </div>
 

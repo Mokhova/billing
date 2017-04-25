@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Метрики связей</title>
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="fonts.css">
+  <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+
+  <script type="text/javascript" src="jquery-2.2.3.min.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function() {
+
+   var $def = $(".default1");
+  /*   $def.click(function() {
+      $(".default1 + .header-dropping").toggleClass("first");
+      $(".first + .header-dropping").toggleClass("second");
+      $(".second + .header-dropping").toggleClass("third");
+    });
+*/
+    $def.click(function() {
+      $(".default1 > .header-subtitle").toggleClass("opened");
+      $(".header-dropping:nth-of-type(2)").toggleClass("first");
+      $(".header-dropping:nth-of-type(4)").toggleClass("second");
+      $(".header-dropping:nth-of-type(5)").toggleClass("third");
+    });
+  });
+	</script>
+</head>
+<body>
+  <header class="header">
+    <div class="header-fixed">
+      <h1 class="header-title">Метрики цикла продаж</h1>
+    </div>
+
+    <div class="header-dropping">
+      <a href="index.html" class="header-subtitle">Принцип сбора метрик</a>
+    </div>
+
+    <div class="header-dropping default1">
+      <h2 class="header-subtitle">Шапка</h2>
+    </div>
+
+    <div class="header-dropping">
+      <a href="edit.html" class="header-subtitle">Редактирование</a>
+    </div>
+
+    <div class="header-dropping">
+      <a href="show.html" class="header-subtitle">Просмотр</a>
+    </div>
+
+  </header>
+
+  <div class="container">
+    <section class="tab-metrics">
+      <div class="block">
+        <h3 class="block-title">Дата в шапке</h3>
+        <p>Посмотрим, нажимают ли календарик в шапке. <br></p>
+        <img src="img/1-common.png" alt="скрин связей" width="650px">
+        <div class="code">
+          <div class="code-title">Событие в GA</div>
+          <!-- https://developers.google.com/analytics/devguides/collection/analyticsjs/events -->
+          <a href="https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide#intro" class="code-spec">спека</a>
+          <code>
+              Category: pp-cycle-header <br>
+              Action: postpone <br>
+              Label: calendar  // кликнули на дату с календарем<br>
+              Label: submit // нажали «отложить», время не указали <br>
+              Label: submit-with-time // нажали «отложить» и указали время <br>
+              Label: cancel // нажали «отменить» <br>
+          </code>
+        <div class="label-container">
+          <span class="label">отправить сразу</span>
+          <span class="label">отдельно с id</span>
+          <span class="label">в кучу</span>
+        </div>
+      </div>
+    </div>
+    </section>
+  </div>
+
+</body>
+</html>
