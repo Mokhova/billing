@@ -65,7 +65,7 @@
           </code>
           <code>
               Category: client-connection <br>
-              Action: click <br>
+              Action: create-open <br>
               Label: create-link <br>
           </code>
         <div class="label-container"> <!--⤳-->
@@ -87,7 +87,7 @@
           </code>
           <code>
               Category: client-connection <br>
-              Action: cancel <br>
+              Action: create-cancel <br>
               Label: cancel-link <br>
           </code>
           <div class="label-container"> <!--⤳-->
@@ -107,7 +107,7 @@
           <a href="https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide#intro" class="code-spec">спека</a>
           <code>
             Category: client-connection <br>
-            Action: created <br>
+            Action: create-created <br>
             Label: created <br>
           </code>
 
@@ -119,7 +119,7 @@
       </div>
 
       <div class="block">
-        <h3 class="block-title">Данные созданной связи</h3>
+        <h3 class="block-title" id="createPar">Данные созданной связи</h3>
         <p>Отправляем по кнопке «показать».
         </p>
         <div class="code">
@@ -127,7 +127,7 @@
           <a href="https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide#intro" class="code-spec">спека</a>
           <code>
             Category: client-connection <br>
-            Action: show-created <br>
+            Action: create<br>
             <br>
             Label: clients-N   //Кол-во клиентов в связи <br>
             Label: star  //Выбран «звездный» клиент<br>
@@ -144,24 +144,28 @@
       </div>
 
       <div class="block">
-        <h3 class="block-title">Процесс создания связи</h3>
+        <h3 class="block-title" id="createDel">Процесс создания связи</h3>
         <p>Посмотрим, удаляют ли:
           <ul>
             <li>Добавленные организации</li>
             <li>Выбранное контактное лицо</li>
+            <li>Всю связь</li>
           </ul>
         </p>
-        <img src="img/4.png" alt="скрин связей" width="650px">
+        <img src="img/10.png" alt="скрин связей" width="650px">
+        <img src="img/11.png" alt="скрин связей" width="650px">
         <div class="code">
           <div class="code-title">Событие в GA</div>
           <a href="https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide#intro" class="code-spec">спека</a>
           <code>
             Category: client-connection <br>
-            Action: creating <br>
+            Action: create <br>
             Label: delete-client //ссылка «удалить» у клиента <br>
             Label: delete-contact //ссылка «удалить» у контакта<br>
+            Label: delete-and-close //нажали на «удалить и закрыть»<br>
           </code>
           <div class="label-container">
+            <span class="label">отдельно с id</span>
             <span class="label">в кучу</span>
             <span class="label">отправить сразу</span>
           </div>
@@ -171,14 +175,14 @@
       <div class="block">
         <h3 class="block-title">Ошибки</h3>
         <p>Сколько возникает ошибка и что дальше при этом делают.</p>
+        <img src="img/4.png" alt="скрин связей" width="650px">
         <div class="code">
           <div class="code-title">Событие в GA</div>
           <a href="https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide#intro" class="code-spec">спека</a>
           <code>
             Category: client-connection <br>
-            Action: delete <br>
+            Action: create <br>
             Label: delete-message //считаем, что показалось сообщение<br>
-            Label: delete-and-close //нажали на «удалить и закрыть»<br>
           </code>
           <div class="label-container">
             <span class="label">в кучу</span>
