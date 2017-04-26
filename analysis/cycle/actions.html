@@ -12,12 +12,7 @@
   $(document).ready(function() {
 
    var $def = $(".default1");
-  /*   $def.click(function() {
-      $(".default1 + .header-dropping").toggleClass("first");
-      $(".first + .header-dropping").toggleClass("second");
-      $(".second + .header-dropping").toggleClass("third");
-    });
-*/
+
     $def.click(function() {
       $(".default1 > .header-subtitle").toggleClass("opened");
       $(".header-dropping:nth-of-type(2)").toggleClass("first");
@@ -59,7 +54,7 @@
         <img src="img/actions-2.png" alt="скрин связей" width="650">
         <div class="code">
           <div class="code-title">Событие в GA</div>
-          <a href="https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide#intro" class="code-spec">спека</a>
+          <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/events" class="code-spec" target="_blank">спека</a>
           <code>
               Category: pp-cycle-actions <br>
               Action: set-manager <br>
@@ -82,12 +77,12 @@
         <img src="img/actions-3.png" alt="скрин связей" width="650">
         <div class="code">
           <div class="code-title">Событие в GA</div>
-          <a href="https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide#intro" class="code-spec">спека</a>
+          <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/events" class="code-spec" target="_blank">спека</a>
           <code>
               Category: pp-cycle-actions <br>
               <br>
-              Action: create-bill // нажали на кнопку «выставить счет»<br>
-              Action: bind-bill // нажали на кнопку «привязать счет»<br>
+              Action: create-bill // нажали на панельке «выставить счет»<br>
+              Action: bind-bill // нажали на панельке «привязать счет»<br>
               <br>
               Label: button<br>
           </code>
@@ -104,7 +99,7 @@
         <img src="img/actions-4.png" alt="скрин связей" width="650">
         <div class="code">
           <div class="code-title">Событие в GA</div>
-          <a href="https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide#intro" class="code-spec">спека</a>
+          <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/events" class="code-spec" target="_blank">спека</a>
           <code>
               Category: pp-cycle-actions <br>
               Action: create-bill <br>
@@ -124,12 +119,13 @@
         <img src="img/actions-5.png" alt="скрин связей" width="650">
         <div class="code">
           <div class="code-title">Событие в GA</div>
-          <a href="https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide#intro" class="code-spec">спека</a>
+          <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/events" class="code-spec" target="_blank">спека</a>
           <code>
               Category: pp-cycle-actions <br>
               Action: bind-bill <br>
-              Label: bound-N // нажали в мастере «привязать», N—кол-во привязанных счетов<br>
-              Label: cancel // закрыли лайтбокс<br>
+              Label: bound-N // нажали в лайтбоксе «привязать», N—кол-во привязанных счетов<br>
+              Label: cancel <br>
+              Label: close <br>
           </code>
           <div class="label-container">
             <span class="label">отдельно с id</span>
@@ -144,11 +140,11 @@
         <img src="img/actions-6.png" alt="скрин связей" width="650">
         <div class="code">
           <div class="code-title">Событие в GA</div>
-          <a href="https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide#intro" class="code-spec">спека</a>
+          <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/events" class="code-spec" target="_blank">спека</a>
           <code>
               Category: pp-cycle-actions <br>
-              Action: finish <br>
-              Label: success <br>
+              Action: finish-success <br>
+              Label: button <br>
           </code>
           <div class="label-container">
             <span class="label">отдельно с id</span>
@@ -159,18 +155,19 @@
 
       <div class="block">
         <h3 class="block-title">Отказ</h3>
-        <p>Хочется понимать, как часто отказывают и с какой причиной, <br>пишут ли комментарий</p>
+        <p>Хочется понимать, как часто отказывают и с какой причиной, пишут ли комментарий</p>
         <img src="img/actions-7.png" alt="скрин связей" width="650">
         <div class="code">
           <div class="code-title">Событие в GA</div>
-          <a href="https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide#intro" class="code-spec">спека</a>
+          <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/events" class="code-spec" target="_blank">спека</a>
           <code>
               Category: pp-cycle-actions <br>
-              Action: finish <br>
-              Label: refused-<причина> // нажали в мастере «привязать», N—кол-во счетов<br>
-              Label: refused-comment // когда написали комментарий<br>
-              Label: refused-comment-empty // без комментариев<br>
-
+              Action: finish-refused <br>
+              Label: reason-<причина> <br>
+              Label: comment-true // если написали комментарий<br>
+              Label: comment-empty // без комментариев<br>
+              Label: cancel <br>
+              Label: close <br>
           </code>
           <div class="label-container">
             <span class="label">отдельно с id</span>
@@ -185,11 +182,15 @@
         <img src="img/actions-8.png" alt="скрин связей" width="650">
         <div class="code">
           <div class="code-title">Событие в GA</div>
-          <a href="https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide#intro" class="code-spec">спека</a>
+          <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/events" class="code-spec" target="_blank">спека</a>
           <code>
               Category: pp-cycle-actions <br>
-              Action: transfer <br>
-              Label: to-other-patrner <br>
+              Action: transfer-to-other-patrner <br>
+              Label: button // нажали на панельке «Передать в другой СЦ» <br>
+              Label: comment-true // если написали коммент <br>
+              Label: comment-empty // без комметария <br>
+              Label: cancel <br>
+              Label: close <br>
           </code>
           <div class="label-container">
             <span class="label">отдельно с id</span>
