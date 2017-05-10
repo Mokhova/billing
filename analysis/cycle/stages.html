@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Метрики связей</title>
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="fonts.css">
+  <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+
+  <script type="text/javascript" src="jquery-2.2.3.min.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function() {
+
+   var $def = $(".default1");
+
+    $def.click(function() {
+      $(".default1 > .header-subtitle").toggleClass("opened");
+      $(".header-dropping:nth-of-type(2)").toggleClass("first");
+      $(".header-dropping:nth-of-type(3)").toggleClass("second");
+      $(".header-dropping:nth-of-type(4)").toggleClass("third");
+    });
+  });
+	</script>
+</head>
+<body>
+  <header class="header">
+    <div class="header-fixed">
+      <h1 class="header-title">Метрики связанных организаций</h1>
+    </div>
+
+    <div class="header-dropping">
+      <a href="index.html" class="header-subtitle">Принцип сбора метрик</a>
+    </div>
+
+    <div class="header-dropping">
+      <a href="header.html" class="header-subtitle">Шапка</a>
+    </div>
+
+    <div class="header-dropping">
+      <a href="actions.html" class="header-subtitle">Панель действий</a>
+    </div>
+
+    <div class="header-dropping default1">
+      <h2 class="header-subtitle">Этапы</h2>
+    </div>
+
+  </header>
+
+  <div class="container">
+    <section class="tab-metrics">
+      <div class="block">
+        <h3 class="block-title">Назначить менеджера</h3>
+        <p>Интересно, как часто у ПП есть ответсвенный.</p>
+        <img src="img/actions-2.png" alt="скрин связей" width="650">
+        <div class="code">
+          <div class="code-title">Событие в GA</div>
+          <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/events" class="code-spec" target="_blank">спека</a>
+          <code>
+              Category: pp-cycle-actions <br>
+              Action: set-manager <br>
+              Label: button // нажали кнопку на панельке <br>
+              Label: submit <br>
+              Label: cancel <br>
+              Label: close <br>
+          </code>
+          <div class="label-container">
+            <span class="label">отдельно с id</span>
+            <span class="label">в кучу</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3 class="block-title">Привязка и выставление счета</h3>
+        <p>Хочется понять, сколько счетов привязывают, выставляют ли счет из ПП.<br>
+          Что происходит чаще.</p>
+        <img src="img/actions-3.png" alt="скрин связей" width="650">
+        <div class="code">
+          <div class="code-title">Событие в GA</div>
+          <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/events" class="code-spec" target="_blank">спека</a>
+          <code>
+              Category: pp-cycle-actions <br>
+              <br>
+              Action: create-bill // нажали на панельке «выставить счет»<br>
+              Action: bind-bill // нажали на панельке «привязать счет»<br>
+              <br>
+              Label: button<br>
+          </code>
+          <div class="label-container">
+            <span class="label">отдельно с id</span>
+            <span class="label">в кучу</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3 class="block-title">Результат выставления счета</h3>
+        <p>Хочется видеть, выставили счет или нет.</p>
+        <img src="img/actions-4.png" alt="скрин связей" width="650">
+        <div class="code">
+          <div class="code-title">Событие в GA</div>
+          <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/events" class="code-spec" target="_blank">спека</a>
+          <code>
+              Category: pp-cycle-actions <br>
+              Action: create-bill <br>
+              Label: created // когда нажали в мастере «выставить счет на...»<br>
+              Label: close // когда закрыли мастер<br>
+          </code>
+          <div class="label-container">
+            <span class="label">отдельно с id</span>
+            <span class="label">в кучу</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3 class="block-title">Результат привязки счетов</h3>
+        <p>Если привязывают счета, то сколько за раз.</p>
+        <img src="img/actions-5.png" alt="скрин связей" width="650">
+        <div class="code">
+          <div class="code-title">Событие в GA</div>
+          <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/events" class="code-spec" target="_blank">спека</a>
+          <code>
+              Category: pp-cycle-actions <br>
+              Action: bind-bill <br>
+              Label: bound-N // нажали в лайтбоксе «привязать», N—кол-во привязанных счетов<br>
+              Label: cancel <br>
+              Label: close <br>
+          </code>
+          <div class="label-container">
+            <span class="label">отдельно с id</span>
+            <span class="label">в кучу</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3 class="block-title">Отложить</h3>
+        <p>Хотим узнать, на какой срок откладывают обычно: неделя, месяц, пара часов.
+        Для этого будем посылать разницу между текущей датой и датой отложенности в днях.
+      Если даты совпадают и указали время, то отправляем, на сколько часов отложили.</p>
+        <img src="img/actions-9.png" alt="скрин связей" width="650">
+        <div class="code">
+          <div class="code-title">Событие в GA</div>
+          <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/events" class="code-spec" target="_blank">спека</a>
+          <code>
+              Category: pp-cycle-actions <br>
+              Action: postpone <br>
+              Label: calendar // кликнули на дату с календарем <br>
+              Label: submit // нажали «отложить», время не указали <br>
+              Label: submit-<срок отложенности> // нажали «отложить», отправляем срок <br>
+              Label: cancel // нажали «отменить» <br>
+              Label: close // нажали на кресик <br>
+          </code>
+          <div class="label-container">
+            <span class="label">отдельно с id</span>
+            <span class="label">в кучу</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3 class="block-title">Завершить работу</h3>
+        <br>
+        <img src="img/actions-6.png" alt="скрин связей" width="650">
+        <div class="code">
+          <div class="code-title">Событие в GA</div>
+          <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/events" class="code-spec" target="_blank">спека</a>
+          <code>
+              Category: pp-cycle-actions <br>
+              Action: finish-success <br>
+              Label: button <br>
+          </code>
+          <div class="label-container">
+            <span class="label">отдельно с id</span>
+            <span class="label">в кучу</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3 class="block-title">Отказ</h3>
+        <p>Хочется понимать, как часто отказывают и с какой причиной, пишут ли комментарий</p>
+        <img src="img/actions-7.png" alt="скрин связей" width="650">
+        <div class="code">
+          <div class="code-title">Событие в GA</div>
+          <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/events" class="code-spec" target="_blank">спека</a>
+          <code>
+              Category: pp-cycle-actions <br>
+              Action: finish-refused <br>
+              Label: reason-<причина> <br>
+              Label: comment-true // если написали комментарий<br>
+              Label: comment-empty // без комментариев<br>
+              Label: cancel <br>
+              Label: close <br>
+          </code>
+          <div class="label-container">
+            <span class="label">отдельно с id</span>
+            <span class="label">в кучу</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3 class="block-title">Передать в другой СЦ </h3>
+        <br>
+        <img src="img/actions-8.png" alt="скрин связей" width="650">
+        <div class="code">
+          <div class="code-title">Событие в GA</div>
+          <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/events" class="code-spec" target="_blank">спека</a>
+          <code>
+              Category: pp-cycle-actions <br>
+              Action: transfer-to-other-patrner <br>
+              Label: button // нажали на панельке «Передать в другой СЦ» <br>
+              Label: comment-true // если написали коммент <br>
+              Label: comment-empty // без комметария <br>
+              Label: cancel <br>
+              Label: close <br>
+          </code>
+          <div class="label-container">
+            <span class="label">отдельно с id</span>
+            <span class="label">в кучу</span>
+          </div>
+        </div>
+      </div>
+
+    </section>
+  </div>
+
+</body>
+</html>
