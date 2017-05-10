@@ -135,6 +135,31 @@
       </div>
 
       <div class="block">
+        <h3 class="block-title">Отложить</h3>
+        <p>Хотим узнать, на какой срок откладывают обычно: неделя, месяц, пара часов.
+        Для этого будем посылать разницу между текущей датой и датой отложенности в днях.
+      Если даты совпадают и указали время, то отправляем, на сколько часов отложили.</p>
+        <img src="img/actions-9.png" alt="скрин связей" width="650">
+        <div class="code">
+          <div class="code-title">Событие в GA</div>
+          <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/events" class="code-spec" target="_blank">спека</a>
+          <code>
+              Category: pp-cycle-actions <br>
+              Action: postpone <br>
+              Label: calendar // кликнули на дату с календарем <br>
+              Label: submit // нажали «отложить», время не указали <br>
+              Label: submit-<срок отложенности> // нажали «отложить», отправляем срок <br>
+              Label: cancel // нажали «отменить» <br>
+              Label: close // нажали на кресик <br>
+          </code>
+          <div class="label-container">
+            <span class="label">отдельно с id</span>
+            <span class="label">в кучу</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="block">
         <h3 class="block-title">Завершить работу</h3>
         <br>
         <img src="img/actions-6.png" alt="скрин связей" width="650">
