@@ -276,16 +276,6 @@ body
   background-color: #404040;
 }
 
-.tabs-white:hover::before
-{
-  content: "\E015";
-  font-family: "Kontur-Iconic";
-  color: black;
-  margin-right: 5px;
-  margin-top: 5px;
-}
-
-
 .tabs-white::before
 {
   content: "\E082";
@@ -294,14 +284,7 @@ body
   margin-right: 5px;
 }
 
-.tabs-black:hover:before
-{
-  content: "\E015";
-  font-family: "Kontur-Iconic";
-  color: black;
-  margin-right: 5px;
-}
-
+/*ховеры на before*/
 .tabs-black::before
 {
   content: "\E001";
@@ -312,21 +295,21 @@ body
 
 .tabs-blank::before
 {
-  content: "\E015";
+  content: "\E032";
   font-family: "Kontur-Iconic";
   color: black;
-  opacity: 0;
   margin-right: 5px;
 }
 
-.tabs-blank:hover::before
+
+.tabs-black:hover:before, .tabs-blank:hover::before, .tabs-white:hover::before
 {
   content: "\E015";
   font-family: "Kontur-Iconic";
   color: black;
-  opacity: 1;
   margin-right: 5px;
 }
+
 
 /*фон светлый*/
 .container-example-light
