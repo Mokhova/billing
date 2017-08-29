@@ -55,7 +55,10 @@
     <section class="tab-metrics">
       <div class="block">
         <h3 class="block-title">Дата в шапке</h3>
-        <p>Посмотрим, нажимают ли календарик в шапке. <br></p>
+        <p>Посмотрим, нажимают ли календарик в шапке. <br>
+          Хотим узнать, на какой срок откладывают обычно: неделя, месяц, пара часов.
+          Для этого будем посылать разницу между текущей датой и датой отложенности в днях.
+        Если даты совпадают и указали время, то отправляем, на сколько часов отложили.</p>
         <img src="img/common-1.png" alt="скрин связей" width="650px">
         <div class="code">
           <div class="code-title">Событие в GA</div>
@@ -66,7 +69,7 @@
               Action: postpone <br>
               Label: calendar  // кликнули на дату с календарем<br>
               Label: submit // нажали «отложить», время не указали <br>
-              Label: submit-with-time // нажали «отложить» и указали время <br>
+              Label: submit-<срок отложенности> // нажали «отложить», отправляем срок <br>
               Label: cancel // нажали «отменить» <br>
               Label: close // нажали на кресик <br>
           </code>
@@ -77,7 +80,33 @@
         </div>
       </div>
     </div>
-    </section>
+
+    <div class="block">
+      <h3 class="block-title">Влкадки</h3>
+      <p>Посмотрим, какими вкладками и в какой момент пользуются. <br></p>
+      <img src="img/common-2.png" alt="скрин связей" width="650px">
+      <div class="code">
+        <div class="code-title">Событие в GA</div>
+        <!-- https://developers.google.com/analytics/devguides/collection/analyticsjs/events -->
+        <a href="https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide#intro" class="code-spec">спека</a>
+        <code>
+            Category: pp-cycle-header <br>
+            Action: tabs <br>
+            Label: stages  // этапы<br>
+            Label: summary // сводка <br>
+            Label: contacts // контакты <br>
+            Label: similar-pp // связанные ПП<br>
+            Label: history // история <br>
+        </code>
+        <div class="label-container">
+          <span class="label">отправить сразу</span>
+          <span class="label">отдельно с id</span>
+          <span class="label">в кучу</span>
+        </div>
+      </div>
+  </div>
+
+  </section>
   </div>
 
 </body>
